@@ -17,6 +17,7 @@ class CellsTableSeeder extends Seeder
                 DB::table('cells')->insert([
                     'row' => $row,
                     'col' => $col,
+                    'title' => null,
                     'color' => null,
                     'link' => null,
                     'created_at' => now(),

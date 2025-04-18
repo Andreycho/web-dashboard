@@ -12,6 +12,7 @@ class Cell extends Model
     protected $fillable = [
         'row',
         'col',
+        'title',
         'color',
         'link',
     ];

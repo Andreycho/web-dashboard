@@ -15,6 +15,7 @@ class CreateCellsTable extends Migration
             $table->id();
             $table->integer('row');
             $table->integer('col');
+            $table->string('title')->nullable();
             $table->string('color')->nullable();
             $table->text('link')->nullable();
             $table->timestamps();

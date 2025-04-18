@@ -22,12 +22,14 @@ class DashboardController extends Controller
     public function saveConfiguration(Request $request, $id)
     {
         $request->validate([
+            'title' => 'required|string|max:100',
             'link' => 'required|url',
             'color' => 'required|string|max:20',
         ]);
 
         $cell = Cell::findOrFail($id);
         $cell->update([
+            'title' => $request->title,
             'link' => $request->link,
             'color' => $request->color,
         ]);
