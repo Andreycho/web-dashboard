@@ -15,6 +15,7 @@
             type="text"
             name="title"
             value="{{ old('title', $cell->title) }}"
+            required
             style="width:100%;padding:0.5rem;margin-bottom:1rem;"
         ><br>
 

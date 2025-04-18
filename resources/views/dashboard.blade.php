@@ -37,11 +37,41 @@
             background-color: #888;
             font-size: 2rem;
         }
+
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 9999;
+            font-size: 1rem;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #notification.fade-out {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
+
     @if(session('success'))
-        <p style="text-align:center; color:green;">{{ session('success') }}</p>
+        <div id="notification">
+            {{ session('success') }}
+        </div>
+
+        <script>
+            const notif = document.getElementById('notification');
+            if (notif) {
+                setTimeout(() => notif.classList.add('fade-out'), 2500);
+                setTimeout(() => notif.remove(), 3000);
+            }
+        </script>
     @endif
 
     <div class="grid">
@@ -54,7 +84,7 @@
                             type="submit"
                             style="background-color: {{ $cell->color ?? '#4f46e5' }};"
                         >
-                            {{ $cell->title}}
+                            {{ $cell->title ?? 'Go' }}
                         </button>
                     </form>
                 @else
